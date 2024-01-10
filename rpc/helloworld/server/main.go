@@ -1,3 +1,4 @@
+//代码运行时出现invalid receiver type ClientCodec (ClientCodec is an interface type)，帮我修改一下
 package main
 
 import (
