@@ -1,13 +1,5 @@
 package main
 
-import "fmt"
+func main() {
 
-int func main() {
-	var x, y int32
-	fmt.Scanf("%d%d", &x, &y)
-	switch x {
-	case 1:
-
-	}
 }
-
