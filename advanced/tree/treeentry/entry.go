@@ -40,4 +40,18 @@ func main() {
 	myRoot.postOrder()
 	fmt.Println()
 
+	nodeCount := 0
+	root.TraversalFunc(func(node *tree.Node) {
+		nodeCount++
+	})
+	fmt.Println("Node count:", nodeCount)
+
+	c := root.TraverseWithChannel()
+	maxNodeValue := 0
+	for node := range c {
+		if node.Value > maxNodeValue {
+			maxNodeValue = node.Value
+		}
+		fmt.Println("Max node value:", maxNodeValue)
+	}
 }
