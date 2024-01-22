@@ -2,6 +2,7 @@ package main
 
 import (
 	"LearingGo/crawier/engine"
+	"LearingGo/crawier/scheduler"
 	"LearingGo/crawier/zhenai/parser"
 	"fmt"
 	"regexp"
@@ -19,7 +20,12 @@ func printCityList(contents []byte) {
 }
 
 func main() {
-	engine.Run(engine.Request{
+	e := engine.ConcurrentEngine{
+		Scheduler:   &scheduler.QueuedScheduler{},
+		WorkerCount: 100,
+	}
+
+	e.Run(engine.Request{
 		Url:        "http://www.zhenai.com/zhenghun",
 		ParserFunc: parser.ParseCityList,
 	})
