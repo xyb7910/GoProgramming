@@ -13,8 +13,10 @@ var ageRe = regexp.MustCompile(
 var marriageRe = regexp.MustCompile(
 	`<td><span class="label">婚况: </span>([^<]+)</td>`)
 
+var idUrlRe = regexp.MustCompile(`http://album.zheai.com/u/([\d]+)`)
+
 func ParseProfile(
-	contents []byte, name string) engine.ParseResult {
+	contents []byte, url string, name string) engine.ParseResult {
 	profile := model.Profile{}
 	profile.Name = name
 	age, err := strconv.Atoi(
@@ -26,7 +28,14 @@ func ParseProfile(
 	profile.Marriage = extractString(contents, marriageRe)
 
 	result := engine.ParseResult{
-		Items: []interface{}{profile},
+		Items: []engine.Item{
+			{
+				Url:     url,
+				Type:    "zhenai",
+				Id:      extractString([]byte(url), idUrlRe),
+				Payload: profile,
+			},
+		},
 	}
 	return result
 }

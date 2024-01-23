@@ -11,6 +11,7 @@ require (
 	github.com/spf13/viper v1.18.2
 	google.golang.org/grpc v1.60.1
 	google.golang.org/protobuf v1.31.0
+	gopkg.in/olivere/elastic.v5 v5.0.86 // indirect
 	gorm.io/driver/mysql v1.5.2
 	gorm.io/gorm v1.25.5
 )

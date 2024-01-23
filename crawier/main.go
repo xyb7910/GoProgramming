@@ -22,8 +22,7 @@ func printCityList(contents []byte) {
 
 func main() {
 	e := engine.ConcurrentEngine{
-		Scheduler: &scheduler.QueuedScheduler{},
-		//Scheduler:   &scheduler.SimpleScheduler{},
+		Scheduler:   &scheduler.QueuedScheduler{},
 		WorkerCount: 100,
 		ItemChan:    persist.ItemSaver(),
 	}
