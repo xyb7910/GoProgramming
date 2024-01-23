@@ -7,9 +7,8 @@ type QueuedScheduler struct {
 	workerChan  chan chan engine.Request
 }
 
-func (s *QueuedScheduler) ConfigMasterWorkerChan(requests chan engine.Request) {
-	//TODO implement me
-	panic("implement me")
+func (s *QueuedScheduler) WorkerChan() chan engine.Request {
+	return make(chan engine.Request)
 }
 
 func (s *QueuedScheduler) Submit(r engine.Request) {

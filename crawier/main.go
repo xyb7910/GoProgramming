@@ -2,6 +2,7 @@ package main
 
 import (
 	"LearingGo/crawier/engine"
+	"LearingGo/crawier/persist"
 	"LearingGo/crawier/scheduler"
 	"LearingGo/crawier/zhenai/parser"
 	"fmt"
@@ -21,8 +22,10 @@ func printCityList(contents []byte) {
 
 func main() {
 	e := engine.ConcurrentEngine{
-		Scheduler:   &scheduler.QueuedScheduler{},
+		Scheduler: &scheduler.QueuedScheduler{},
+		//Scheduler:   &scheduler.SimpleScheduler{},
 		WorkerCount: 100,
+		ItemChan:    persist.ItemSaver(),
 	}
 
 	e.Run(engine.Request{
