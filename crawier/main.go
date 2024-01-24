@@ -2,7 +2,6 @@ package main
 
 import (
 	"LearingGo/crawier/engine"
-	"LearingGo/crawier/persist"
 	"LearingGo/crawier/scheduler"
 	"LearingGo/crawier/zhenai/parser"
 	"fmt"
@@ -24,7 +23,7 @@ func main() {
 	e := engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
 		WorkerCount: 100,
-		ItemChan:    persist.ItemSaver(),
+		//ItemChan:    persist.ItemSaver(),
 	}
 
 	e.Run(engine.Request{
