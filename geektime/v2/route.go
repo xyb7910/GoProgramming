@@ -28,6 +28,13 @@ type node struct {
 
 	//通配符 * 表示的节点，任意匹配
 	starChild *node
+	//路径参数
+	paramchild *node
+}
+
+type matchInfo struct {
+	n          *node
+	pathParams map[string]string
 }
 
 func newRouter() router {
@@ -88,6 +95,36 @@ func (r *router) addRoute(method string, path string, handler HandlerFunc) {
 }
 
 func (n *node) childrenOfCreate(path string) *node {
+	if path == "*" {
+		if n.children == nil {
+			n.starChild = &node{path: "*"}
+		}
+	}
+
+	if path == "*" {
+		if n.paramchild != nil {
+			panic(fmt.Sprintf("web: 非法路由，已有路径参数路由。不允许同时注册通配符路由和参数路由 [%s]", path))
+		}
+		if n.starChild == nil {
+			n.starChild = &node{path: path}
+		}
+		return n.starChild
+	}
+
+	// 以 ： 开头，我们一般认为是参数路由
+	if path[0] == ':' {
+		if n.starChild != nil {
+			panic(fmt.Sprintf("web: 非法路由，已有路径参数路由，不允许同时注册通配符路由和参数路由 [%s]", path))
+		}
+		if n.paramchild != nil {
+			if n.paramchild.path != path {
+				panic(fmt.Sprintf("web： 路由冲突， 参数路由冲突，已有 %s，新注册 %s", &n.paramchild.path, path))
+			}
+		} else {
+			n.paramchild = &node{path: path}
+		}
+		return n.paramchild
+	}
 	if n.children == nil {
 		n.children = make(map[string]*node)
 	}
@@ -99,6 +136,14 @@ func (n *node) childrenOfCreate(path string) *node {
 	return child
 }
 
+func (m *matchInfo) addValue(key string, Value string) {
+	if m.pathParams == nil {
+		m.pathParams = map[string]string{key: Value}
+	}
+	m.pathParams[key] = Value
+}
+
+// 路由查找实现
 func (r *router) findRoute(method string, path string) (*node, bool) {
 	root, ok := r.trees[method]
 	if !ok {
@@ -119,10 +164,61 @@ func (r *router) findRoute(method string, path string) (*node, bool) {
 	return root, true
 }
 
+// 判断是否存在子节点
 func (n *node) childof(path string) (*node, bool) {
 	if n.children == nil {
-		return nil, false
+		return n.starChild, n.starChild != nil
 	}
 	res, ok := n.children[path]
+	if !ok {
+		return n.starChild, n.starChild != nil
+	}
 	return res, ok
+}
+
+// childof 返回子节点
+// 第一个返回值为 *node 是命中的节点
+// 第二个返回值为 bool 代表是否命中参数值
+// 第三个返回值为 bool 代表是否命中
+func (n *node) childOf1(path string) (*node, bool, bool) {
+	if n.children == nil {
+		if n.paramchild != nil {
+			return n.paramchild, true, true
+		}
+		return n.starChild, true, n.starChild != nil
+	}
+	res, ok := n.children[path]
+	if !ok {
+		if n.paramchild != nil {
+			return n.paramchild, true, true
+		}
+		return n.starChild, false, n.starChild != nil
+	}
+	return res, true, true
+}
+
+func (r *router) findRoute1(method string, path string) (*matchInfo, bool) {
+	root, ok := r.trees[method]
+	if !ok {
+		return nil, false
+	}
+
+	if path == "/" {
+		return &matchInfo{n: root}, true
+	}
+
+	segs := strings.Split(strings.Trim(path, "/"), "/")
+	mi := &matchInfo{}
+	for _, s := range segs {
+		var matchParam bool
+		root, matchParam, ok = root.childOf1(s)
+		if !ok {
+			return nil, false
+		}
+		if matchParam {
+			mi.addValue(root.path[1:], s)
+		}
+	}
+	mi.n = root
+	return mi, true
 }
