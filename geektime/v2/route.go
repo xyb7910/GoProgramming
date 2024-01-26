@@ -13,6 +13,11 @@ type router struct {
 
 type HandlerFunc func(ctx *Context)
 
+// node 代表路由树的节点
+// 路由树的匹配顺序为：
+// 1、静态完全匹配
+// 2、通配符匹配
+// 这是不回溯匹配
 type node struct {
 	path string
 	//children 子节点
@@ -20,6 +25,9 @@ type node struct {
 	children map[string]*node
 	//handler 命中路由之后的逻辑
 	handler HandlerFunc
+
+	//通配符 * 表示的节点，任意匹配
+	starChild *node
 }
 
 func newRouter() router {
@@ -89,4 +97,32 @@ func (n *node) childrenOfCreate(path string) *node {
 		n.children[path] = child
 	}
 	return child
+}
+
+func (r *router) findRoute(method string, path string) (*node, bool) {
+	root, ok := r.trees[method]
+	if !ok {
+		return nil, false
+	}
+
+	if path == "/" {
+		return root, true
+	}
+
+	segs := strings.Split(strings.Trim(path, "/"), "/")
+	for _, s := range segs {
+		root, ok = root.childof(s)
+		if !ok {
+			return nil, false
+		}
+	}
+	return root, true
+}
+
+func (n *node) childof(path string) (*node, bool) {
+	if n.children == nil {
+		return nil, false
+	}
+	res, ok := n.children[path]
+	return res, ok
 }

@@ -19,7 +19,12 @@ type Server interface {
 
 type HTTPServer struct{ router }
 
-var _Server = &HTTPServer{}
+func (s *HTTPServer) postRoute(method string, path string, handler HandlerFunc) {
+	//TODO implement me
+	panic("implement me")
+}
+
+var _ Server = &HTTPServer{}
 
 func NewHTTPServer() *HTTPServer {
 	return &HTTPServer{
@@ -28,7 +33,7 @@ func NewHTTPServer() *HTTPServer {
 }
 
 // ServerHTTP HTTPServer 处理请求的入口
-func (s *HTTPServer) Server(writer http.ResponseWriter, request *http.Request) {
+func (s *HTTPServer) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	ctx := &Context{
 		Req:  request,
 		Resp: writer,
@@ -36,17 +41,13 @@ func (s *HTTPServer) Server(writer http.ResponseWriter, request *http.Request) {
 	s.server(ctx)
 }
 
-// 启动服务器
+// Start 启动服务器
 func (s *HTTPServer) Start(addr string) error {
 	return http.ListenAndServe(addr, s)
 }
 
 func (s *HTTPServer) Get(path string, handler HandlerFunc) {
 	s.addRoute(http.MethodGet, path, handler)
-}
-
-func (s *HTTPServer) Post(path string, handler HandlerFunc) {
-	s.postRoute(http.MethodPost, path, handler)
 }
 
 func (s *HTTPServer) server(ctx *Context) {
