@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"
@@ -8,6 +9,7 @@ import (
 
 // User model
 type User struct {
+	ID       uint `gorm:"primary"`
 	Name     string
 	Age      int
 	Birthday time.Time
@@ -56,4 +58,14 @@ func main() {
 	//db.Omit("Name", "Age", "CreatedAt").Create(&user2)
 	//// INSERT INTO `users` (`birthday`,`updated_at`) VALUES ("2020-01-01 00:00:00.000", "2020-07-04 11:05:21.775")
 
+	// 批量插入数据
+	users := []User{{Name: "Leo", Age: 17, Birthday: time.Now()},
+		{Name: "Lei", Age: 18, Birthday: time.Now()},
+		{Name: "Yan", Age: 19, Birthday: time.Now()},
+	}
+
+	db.Create(&users)
+	for _, user := range users {
+		fmt.Println(user.ID, user.Name, user.Age, user.Birthday)
+	}
 }
