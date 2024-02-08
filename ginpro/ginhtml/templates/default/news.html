@@ -1,0 +1,40 @@
+{{define "default/news.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{.title}}</h1>
+<p>{{.news.Title}}</p>
+<p>{{.news.Content}}</p>
+    {{with .news}}
+    {{if ge .Score 90}}
+        <p>优秀</p>
+    {{else if ge .Score 80}}
+        <p>良好</p>
+    {{else if ge .Score 70}}
+        <p>中等</p>
+    {{else if ge .Score 60}}
+        <p>较差</p>
+    {{else}}
+        <p>很差</p>
+    {{end}}
+    {{end}}
+
+<ul>
+    {{range $index, $element := .news.Hobby}}
+    <li>{{$index}}---{{$element}}</li>
+    {{end}}
+</ul>
+
+<ul>
+    {{range $index, $element := .articles}}
+    <li>{{$index}}---{{$element.Title}}---{{$element.Content}}</li>
+    {{end}}
+</ul>
+
+</body>
+</html>
+{{end}}

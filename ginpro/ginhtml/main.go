@@ -5,6 +5,12 @@ import "github.com/gin-gonic/gin"
 type Article struct {
 	Title   string
 	Content string
+	Score   int
+	Hobby   []string
+}
+
+type ArticleList struct {
+	articles []Article
 }
 
 func main() {
@@ -34,10 +40,34 @@ func main() {
 		article := Article{
 			Title:   "hello",
 			Content: "hello world",
+			Score:   100,
+			Hobby:   []string{"sleep", "eat", "play"},
+		}
+
+		articles := []Article{
+			{
+				Title:   "hello1",
+				Content: "hello world",
+				Score:   100,
+				Hobby:   []string{"sleep", "eat", "play"},
+			},
+			{
+				Title:   "hello2",
+				Content: "hello world",
+				Score:   100,
+				Hobby:   []string{"sleep", "eat", "play"},
+			},
+			{
+				Title:   "hello3",
+				Content: "hello world",
+				Score:   100,
+				Hobby:   []string{"sleep", "eat", "play"},
+			},
 		}
 		c.HTML(200, "default/news.html", gin.H{
-			"title": "default news page",
-			"news":  article,
+			"title":    "default news page",
+			"news":     article,
+			"articles": articles,
 		})
 	})
 	r.Run()
