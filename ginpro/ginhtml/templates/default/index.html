@@ -4,18 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/static/css/base.css">
 </head>
 <body>
+{{template "public/page_header.html" .}}
 <h1>{{.title}}</h1>
 
 {{$t := .title}}
 
 <br>
-
-
 <h2>{{$t}}</h2>
 
+<br>
 
+{{.time}}
+
+<br>
+
+{{UnixToTime .timestamp}}
+
+<br>
+
+{{PrintToAdd .title .content}}
+
+
+{{template "public/page_footer.html" .}}
 </body>
 </html>
 {{end}}
