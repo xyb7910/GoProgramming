@@ -1,10 +1,13 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"LearingGo/ginpro/ginrouter/middleware"
+	"github.com/gin-gonic/gin"
+)
 
 // AdminRoutersInit  管理后台路由
 func AdminRoutersInit(r *gin.Engine) {
-	adminRouters := r.Group("/admin")
+	adminRouters := r.Group("/admin", middleware.InitMiddleWareOne, middleware.InitMiddleWareTwo)
 	{
 		adminRouters.GET("/", func(c *gin.Context) {
 			c.String(200, "后台首页")
