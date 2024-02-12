@@ -21,14 +21,18 @@ func main() {
 		c.String(200, "delete finish")
 	})
 
-	r.GET("login", utils.DefaultController{}.LOGIN1, func(c *gin.Context) {
+	/*
+		设置 二级路由
+	*/
+
+	r.GET("/login", utils.DefaultController{}.LOGIN1, func(c *gin.Context) {
 		c.String(200, "login finish")
 	})
 
-	r.GET("/get1", utils.DefaultController{}.GET2, func(c *gin.Context) {
+	r.GET("/get1.gin.com", utils.DefaultController{}.GET2, func(c *gin.Context) {
 		c.String(200, "get finish")
 	})
-	r.GET("/get1", utils.DefaultController{}.GET2, func(c *gin.Context) {
+	r.GET("/get2.gin.com", utils.DefaultController{}.GET2, func(c *gin.Context) {
 		c.String(200, "get finish")
 	})
 
