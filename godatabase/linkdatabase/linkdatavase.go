@@ -39,5 +39,5 @@ func main() {
 		fmt.Println("link db success")
 	}
 
-	//defer db.Close()
+	defer db.Close()
 }
