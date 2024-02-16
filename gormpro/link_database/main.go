@@ -49,5 +49,28 @@ func main() {
 			"message": "delete success",
 		})
 	})
+
+	r.GET("addarticle", controller.ArticleController{}.Add, func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "add article success",
+		})
+	})
+	r.GET("getarticle", controller.ArticleController{}.GetOne, func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "get article success",
+		})
+	})
+
+	r.GET("getsum", controller.ArticleController{}.GetSum, func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "get article success",
+		})
+	})
+
+	r.GET("getscan", controller.ArticleController{}.GetScan, func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "get article success",
+		})
+	})
 	r.Run()
 }
