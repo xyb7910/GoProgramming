@@ -1,0 +1,13 @@
+name: "viper_test"
+host: "127.0.0.1"
+version: "v0.0.1"
+start_time: "2022-10-17"
+
+
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "123456789"
+  dbname: "viper_test"
+
