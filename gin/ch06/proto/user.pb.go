@@ -25,8 +25,8 @@ type Teacher struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name   string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Course []string `protobuf:"bytes,2,rep,name=course,proto3" json:"course,omitempty"`
+	Name   string   `protobuf1:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Course []string `protobuf1:"bytes,2,rep,name=course,proto3" json:"course,omitempty"`
 }
 
 func (x *Teacher) Reset() {

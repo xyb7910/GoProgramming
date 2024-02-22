@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+// 前面的 ";" 表示当前的 .proto 文件所在的路径, 分号后面表示生成 go 文件的包名
+option go_package = "./proto;protoServer";
+
+
+// message 定义一种消息类型，关键字 message 定义结构，并且结构中可以嵌套定义结构，
+message Userinfo {
+  // 名字
+  string name = 1;
+  // 年龄
+  int32 age = 2;
+  PhoneType type = 3;
+  // repeated 关键字类似于 go 中的切片，编译之后对应于 go 中的切片
+  repeated string hobby = 4;
+}
+
+enum PhoneType {
+  MOBILE = 0;
+  HOME = 1;
+  WORK = 2;
+}
+
+
