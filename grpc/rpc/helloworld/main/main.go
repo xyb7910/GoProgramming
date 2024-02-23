@@ -1,8 +1,7 @@
 package main
 
 import (
-	"LearingGo/grpc/rpc/helloworld/proto"
-	"LearingGo/rpc/helloworld/proto"
+	helloworld "LearingGo/grpc/rpc/helloworld/proto"
 	"encoding/json"
 	"fmt"
 	"github.com/golang/protobuf/proto"
@@ -15,7 +14,7 @@ type Hello struct {
 }
 
 func main() {
-	req := helloworld.helloworld{
+	req := helloworld.HelloRequest{
 		Name:    "ypb",
 		Age:     18,
 		Courses: []string{"go", "gin", "hello"},
