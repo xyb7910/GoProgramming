@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-func main() {
-	timeFormat()
-}
-
 func timeDemo() {
 	now := time.Now() //获取当前时间
 	fmt.Printf("current time:%v\n", now)
@@ -65,4 +61,32 @@ func timeFormat() {
 	fmt.Println(now.Format("2006/01/02 15:04"))
 	fmt.Println(now.Format("15:04 2006/01/02"))
 	fmt.Println(now.Format("2006/01/02"))
+}
+
+func timestampDemo2(timestamp int64) {
+	timeobj := time.Unix(timestamp, 0)
+	year := timeobj.Year()
+	month := timeobj.Month()
+	day := timeobj.Day()
+	hour := timeobj.Hour()
+	minute := timeobj.Minute()
+	second := timeobj.Second()
+	fmt.Printf("%d-%02d-%02d %02d:%02d:%02d\n", year, month, day, hour, minute, second)
+}
+
+func addtime() {
+	now := time.Now()
+	later := now.Add(time.Hour)
+	fmt.Println(later)
+}
+
+func tickDemo() {
+	ticker := time.Tick(time.Second)
+	for i := range ticker {
+		fmt.Println(i)
+	}
+}
+
+func main() {
+	tickDemo()
 }
