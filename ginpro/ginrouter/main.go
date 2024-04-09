@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"LearingGo/ginpro/ginrouter/router"
+	"ginpro/ginrouter/router"
 )
 
 func main() {

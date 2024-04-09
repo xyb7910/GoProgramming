@@ -1,7 +1,7 @@
 package router
 
 import (
-	"LearingGo/ginpro/gincontroller/controller/admin"
+	"ginpro/gincontroller/controller/admin"
 	"github.com/gin-gonic/gin"
 )
 

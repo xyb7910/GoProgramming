@@ -1,4 +1,4 @@
-module LearingGo
+module ginpro
 
 go 1.21
 

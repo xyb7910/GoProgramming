@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LearingGo/ginpro/ginmodel/models"
+	"ginpro/ginmodel/models"
 	"github.com/gin-gonic/gin"
 	"html/template"
 )

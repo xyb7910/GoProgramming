@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"LearingGo/ginpro/gincookie/middleware/utils"
+	"ginpro/gincookie/middleware/utils"
 )
 
 func main() {

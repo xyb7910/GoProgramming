@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LearingGo/ginpro/gincontroller/router"
+	"ginpro/gincontroller/router"
 	"github.com/gin-gonic/gin"
 )
 

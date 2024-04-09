@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LearingGo/ginpro/ginsession/controller"
+	"ginpro/ginsession/controller"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
