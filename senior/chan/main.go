@@ -1,65 +1,63 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
-func Hu(ch chan int) {
-	time.Sleep(2 * time.Second)
-	fmt.Println("after two second hu!!")
+//func main() {
+//	chan1 := make(chan int)
+//	go rev(chan1)
+//	chan1 <- 1
+//	fmt.Println("send success")
+//}
 
-	// 执行语句，通知主协程结束
-	ch <- 100
+func rev(c chan int) {
+	ret := <-c
+	fmt.Println("receive success", ret)
 }
 
-func Send(ch chan int) {
-	for i := 0; i < 13; i++ {
-		ch <- i
-		fmt.Println("send ", i)
-	}
-	close(ch)
-}
+// 创建两个channel,将1到100写进chan1中， 并且将chan1中的数据取出乘以二写进chan2中
+func main() {
+	//chan1 := make(chan int, 100)
+	//chan2 := make(chan int, 100)
+	//
+	//go send(chan1)
+	//go receive(chan1, chan2)
+	//
+	//for res := range chan2 {
+	//	fmt.Println(res)
+	//}
+	//defer close(chan2)
+	//defer close(chan1)
 
-func Receive(ch chan int) {
-	time.Sleep(time.Second * 2)
-	for {
+	// 打印十以内的奇数
+	ch := make(chan int, 1)
+	for i := 1; i < 10; i++ {
 		select {
-		case v, ok := <-ch:
-			if !ok {
-				fmt.Printf("chan close, receicve:%v\n", v)
-				return
+		case x := <-ch:
+			{
+				fmt.Println(x)
 			}
-			fmt.Println("receive ", v)
+		case ch <- i:
+			{
+
+			}
 		}
 	}
 }
 
-func main() {
-	//ch := make(chan int)
-	//
-	//go Hu(ch)
-	//
-	//fmt.Println("start hu, wait for hu finish")
-	//
-	//// 从缓冲信道中读取数据
-	//v := <-ch
-	//fmt.Println("hu finish, value is ", v)
+func send(c chan int) {
+	for i := 1; i <= 100; i++ {
+		c <- i
+	}
+}
 
-	//ch := make(chan int, 10)
-	//
-	//go Receive(ch)
-	//go Send(ch)
-	//
-	//for {
-	//	time.Sleep(time.Second * 1)
-	//}
-
-	buffedChan := make(chan int, 2)
-	buffedChan <- 1
-	buffedChan <- 2
-	close(buffedChan)
-	for i := range buffedChan {
-		fmt.Println(i)
+func receive(c1 chan int, c2 chan int) {
+	for {
+		num, ok := <-c1
+		if ok {
+			num = num * 2
+			c2 <- num
+		} else {
+			break
+		}
 	}
 }
