@@ -1,0 +1,16 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ping                     --> main.main.func1 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2024/04/14 - 23:11:21 | 200 |      66.625µs |             ::1 | GET      "/ping"
+[GIN] 2024/04/14 - 23:11:34 | 200 |      27.375µs |             ::1 | GET      "/ping"
+[GIN] 2024/04/16 - 16:52:19 | 404 |      15.959µs |             ::1 | GET      "/resource/5s/vue.js"
+[GIN] 2024/04/16 - 16:53:46 | 404 |       1.375µs |             ::1 | GET      "/resource/5s/vue.js"
+[GIN] 2024/04/16 - 16:54:41 | 404 |       1.833µs |             ::1 | GET      "/resource/5s/vue.js"
+[GIN] 2024/04/16 - 16:58:31 | 404 |       2.666µs |             ::1 | GET      "/resource/5s/vue.js"

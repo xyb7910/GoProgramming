@@ -16,15 +16,32 @@ type UserInfo2 struct {
 	Password string `form:"password" json:"password" binding:"required"`
 }
 
-type UserInfo3 struct {
-	Name string `form:"name" xml:"name" binding:"required"`
-	Age  int    `form:"age" xml:"age" binding:"required"`
+type Article struct {
+	Title   string `xml:"title" binding:"required"`
+	Content string `xml:"content" binding:"required"`
 }
 
 func main() {
 	r := gin.Default()
 
+	// 加载模板
 	r.LoadHTMLGlob("templates/*")
+
+	//user := struct {
+	//	Name   string
+	//	Gender string
+	//	Age    int
+	//}{
+	//	Name:   "john",
+	//	Gender: "male",
+	//	Age:    20,
+	//}
+	//r.GET("/getuser", func(c *gin.Context) {
+	//	c.HTML(200, "templates/index.html", gin.H{
+	//		"user": user,
+	//	})
+	//})
+
 	// GET /?name=john&age=20&sex=male&address=shanghai
 	r.GET("/", func(c *gin.Context) {
 		name := c.Query("name")
@@ -67,6 +84,7 @@ func main() {
 			c.JSON(200, user)
 		}
 	})
+
 	r.POST("/doAddUser2", func(c *gin.Context) {
 		user := &UserInfo2{}
 		if err := c.ShouldBind(&user); err != nil {
@@ -81,12 +99,12 @@ func main() {
 
 	// 获取POST xml请求的数据
 	r.POST("/getUserXml", func(c *gin.Context) {
-		user := &UserInfo3{}
+		article := &Article{}
 
 		xmlSliceData, _ := c.GetRawData()
 
-		if err := xml.Unmarshal(xmlSliceData, &user); err != nil {
-			c.JSON(200, user)
+		if err := xml.Unmarshal(xmlSliceData, &article); err == nil {
+			c.JSON(200, article)
 		} else {
 			c.JSON(400, gin.H{"err": err.Error()})
 		}

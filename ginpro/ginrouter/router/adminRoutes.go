@@ -1,7 +1,7 @@
 package router
 
 import (
-	"LearingGo/ginpro/ginrouter/middleware"
+	"ginpro/ginrouter/middleware"
 	"github.com/gin-gonic/gin"
 )
 

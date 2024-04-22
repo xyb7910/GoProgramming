@@ -9,12 +9,12 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.LoadHTMLGlob("templates/*")
-
+	// 注册模板函数必须在加载模板上面
 	r.SetFuncMap(template.FuncMap{
 		"print": models.Print,
 	})
 
+	r.LoadHTMLGlob("templates/*")
 	r.GET("/hello", func(c *gin.Context) {
 		c.HTML(200, "ginmodel/deafult.html", gin.H{
 			"ID":      "1",
