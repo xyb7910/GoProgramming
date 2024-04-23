@@ -53,5 +53,28 @@ func main() {
 			"dst1":     dst1,
 		})
 	})
+
+	r.GET("/muti", func(c *gin.Context) {
+		c.HTML(200, "templates/muti.html", gin.H{})
+	})
+
+	r.POST("/uploadmuti", func(c *gin.Context) {
+		username := c.PostForm("username")
+
+		form, _ := c.MultipartForm()
+		files := form.File["face[]"]
+
+		for _, file := range files {
+			// 传文件指定目录
+			dst := path.Join("./static/upload", file.Filename)
+			c.SaveUploadedFile(file, dst)
+		}
+
+		c.JSON(200, gin.H{
+			"success":  true,
+			"username": username,
+		})
+	})
+
 	r.Run()
 }
