@@ -1,8 +1,8 @@
 package main
 
 import (
-	"LearingGo/gormpro/link_database/controller"
 	"github.com/gin-gonic/gin"
+	"gormpro/link_database/controller"
 )
 
 func main() {

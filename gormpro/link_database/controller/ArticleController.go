@@ -1,10 +1,10 @@
 package controller
 
 import (
-	"LearingGo/gormpro/link_database/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
+	"gormpro/link_database/models"
 )
 
 type ArticleController struct {

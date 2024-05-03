@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"LearingGo/gormpro/link_database/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"gormpro/link_database/models"
 	"time"
 )
 
@@ -13,25 +13,27 @@ type UserController struct {
 func (con UserController) Add(c *gin.Context) {
 	// 单数据
 	user := models.User{
-		UserName: "ypb",
+		UserName: "ypc",
 		Age:      20,
 		Email:    "ychag@example.com",
 		AddTime:  int(time.Now().Unix()),
 	}
 
 	// 批量数据
-	users := []*models.User{
-		{UserName: "yxc", Age: 20, Email: "ychag@example.com", AddTime: int(time.Now().Unix())},
-		{UserName: "zmz", Age: 20, Email: "zmzag@example.com", AddTime: int(time.Now().Unix())},
-	}
+	//users := []*models.User{
+	//	{UserName: "yxc", Age: 20, Email: "ychag@example.com", AddTime: int(time.Now().Unix())},
+	//	{UserName: "zmz", Age: 20, Email: "zmzag@example.com", AddTime: int(time.Now().Unix())},
+	//}
 
-	result := models.DB.Create(&users) // 通过指针创建
+	// INSERT INTO `user` (`user_name`,`age`,`email`,`add_time`) VALUES ('ypc',20,'ychag@example.com',1714534305)
+	result := models.DB.Debug().Create(&user) // 通过指针创建
+
 	if result.RowsAffected > 1 {
 		fmt.Println(user.Id)
 	}
 
 	fmt.Println(result.RowsAffected)
-	fmt.Println(user.Id)
+	//fmt.Println(user.Id)
 	c.String(200, "add ok")
 }
 

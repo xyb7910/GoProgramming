@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e53d401c-f5f8-4924-9f7b-0bd8693596b8" name="Changes" comment="" />
+    <list default="true" id="e53d401c-f5f8-4924-9f7b-0bd8693596b8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ginpro/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../ginpro/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ginpro/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../ginpro/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gormpro/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../gormpro/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gormpro/link_database/controller/ArticleController.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gormpro/link_database/controller/ArticleController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gormpro/link_database/controller/UserController.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gormpro/link_database/controller/UserController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gormpro/link_database/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gormpro/link_database/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gormpro/link_database/models/core.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gormpro/link_database/models/core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/senior.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/senior.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +28,28 @@
     </option>
   </component>
   <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "xyb7910"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:xyb7910/GoProgramming.git",
+    "accountId": "2480effd-2f9a-46fa-a00f-1a231234f15f"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2eftSbvPkJ23r8iLSzSGqbksWTt" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -29,35 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ypb/GolandProjects/LearingGo/senior&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Build.go build LearingGo/reflect/test2.executor": "Run",
+    "Go Build.go build main.go (1).executor": "Run",
+    "Go Build.go build main.go (2).executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/ypb/GolandProjects/LearingGo/senior",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
-  <component name="RunManager" selected="Go Build.go build LearingGo/generics">
-    <configuration name="go build LearingGo/chan" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="senior" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="LearingGo/chan" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/chan/main.go" />
-      <method v="2" />
-    </configuration>
+}]]></component>
+  <component name="RunManager" selected="Go Build.go build main.go (2)">
     <configuration name="go build LearingGo/generics" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="senior" />
       <working_directory value="$PROJECT_DIR$" />
@@ -67,22 +92,31 @@
       <filePath value="$PROJECT_DIR$/generics/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build LearingGo/reflect" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build LearingGo/reflect/test2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="senior" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="LearingGo/reflect" />
+      <package value="LearingGo/reflect/test2" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/reflect/main.go" />
+      <filePath value="$PROJECT_DIR$/reflect/test2/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build LearingGo/sync" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="senior" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="LearingGo/sync" />
+      <kind value="FILE" />
+      <package value="LearingGo" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/sync/main.go" />
+      <filePath value="$PROJECT_DIR$/reflect/test2/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="senior" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="LearingGo" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/reflect/test3/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -96,13 +130,21 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go (2)" />
+        <item itemvalue="Go Build.go build main.go (1)" />
+        <item itemvalue="Go Build.go build LearingGo/reflect/test2" />
         <item itemvalue="Go Build.go build LearingGo/generics" />
         <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="Go Build.go build LearingGo/sync" />
-        <item itemvalue="Go Build.go build LearingGo/chan" />
-        <item itemvalue="Go Build.go build LearingGo/reflect" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-33c477a475b1-b97fc8a1e17c-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-241.14494.238" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-GO-241.14494.238" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

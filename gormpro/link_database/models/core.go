@@ -17,5 +17,5 @@ func init() {
 		panic(err)
 	}
 	DB.AutoMigrate(&User{})
-	DB.AutoMigrate(&Article{})
+	//DB.AutoMigrate(&Article{})
 }
