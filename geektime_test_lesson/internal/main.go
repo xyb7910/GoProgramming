@@ -2,28 +2,25 @@ package main
 
 import (
 	"fmt"
-	"geektime_test_lesson/web"
-	"github.com/gin-contrib/cors"
+	"geektime_test_lesson/internal/web"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"strings"
-	"time"
 )
 
 func main() {
 	server := gin.Default()
 	// 实现跨域问题
-	server.Use(cors.New(cors.Config{
-		AllowCredentials: true,
-		AllowHeaders:     []string{"Content-Type"},
-		AllowOriginFunc: func(origin string) bool {
-			if strings.HasPrefix(origin, "http://localhost") {
-				return true
-			}
-			return strings.Contains(origin, "your_company.com")
-		},
-		MaxAge: 12 * time.Hour,
-	}))
+	//server.Use(cors.New(cors.Config{
+	//	AllowCredentials: true,
+	//	AllowHeaders:     []string{"Content-Type"},
+	//	AllowOriginFunc: func(origin string) bool {
+	//		if strings.HasPrefix(origin, "http://localhost") {
+	//			return true
+	//		}
+	//		return strings.Contains(origin, "your_company.com")
+	//	},
+	//	MaxAge: 12 * time.Hour,
+	//}))
 	// 实现 user 相关路由的注册
 	user := web.UserHandler{}
 	user.RegisterRoute(server)
