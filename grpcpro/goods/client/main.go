@@ -33,7 +33,7 @@ type GetGoodsRes struct {
 }
 
 func main() {
-	// 1.使用 rpc client 调用 rpc server
+	// 1.使用 gorpc client 调用 gorpc server
 	conn, err := rpc.Dial("tcp", "127.0.0.1:1234")
 	if err != nil {
 		fmt.Println(err)

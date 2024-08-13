@@ -59,7 +59,7 @@ func main() {
 	// 1.创建rpc server
 	err := rpc.RegisterName("Goods", new(Goods))
 	if err != nil {
-		fmt.Printf("register rpc error: %v\n", err)
+		fmt.Printf("register gorpc error: %v\n", err)
 	}
 
 	// 2.监听端口

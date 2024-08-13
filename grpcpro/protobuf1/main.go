@@ -1,9 +1,9 @@
 package main
 
 import (
-	pro "LearingGo/grpcpro/protobuf1/proto"
 	"fmt"
 	"google.golang.org/protobuf/proto"
+	pro "grpcpro/protobuf1/proto"
 )
 
 func main() {
