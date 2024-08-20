@@ -12,12 +12,16 @@ func Iterate(input any) ([]any, error) {
 	kind := typ.Kind()
 
 	if kind != reflect.Array && kind != reflect.Slice && kind != reflect.String {
-		return nil, errors.New("input must be array, slicex or string")
+		return nil, errors.New("input must be array, slice or string")
 	}
 	res := make([]any, 0, val.Len())
 	for i := 0; i < val.Len(); i++ {
 		ele := val.Index(i)
-		res = append(res, ele.Interface())
+		if kind == reflect.String {
+			res = append(res, string(ele.Interface().(uint8)))
+		} else {
+			res = append(res, ele.Interface())
+		}
 	}
 	return res, nil
 }
@@ -39,6 +43,7 @@ func IterateMapV1(input any) ([]any, []any, error) {
 	return keys, values, nil
 }
 
+// IterateMapV2 遍历map
 func IterateMapV2(input any) ([]any, []any, error) {
 	val := reflect.ValueOf(input)
 	if val.Kind() != reflect.Map {

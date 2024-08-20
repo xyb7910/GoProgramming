@@ -14,10 +14,13 @@ type Selector[T any] struct {
 	tableName string
 	where     []Predicate
 	args      []any
+	model     *Model
+
+	db *DB
 }
 
-func NewSelector[T any]() *Selector[T] {
-	return &Selector[T]{}
+func NewSelector[T any](db *DB) *Selector[T] {
+	return &Selector[T]{db: db}
 }
 
 func (s *Selector[T]) Where(ps ...Predicate) *Selector[T] {
@@ -31,6 +34,14 @@ func (s *Selector[T]) Form(tableName string) *Selector[T] {
 }
 
 func (s *Selector[T]) Build() (*Query, error) {
+	var (
+		t   T
+		err error
+	)
+	s.model, err = s.db.r.get(&t)
+	if err != nil {
+		return nil, err
+	}
 	//var sb strings.Builder
 	s.sb.WriteString("SELECT * FROM ")
 	if s.tableName != "" {
@@ -46,7 +57,7 @@ func (s *Selector[T]) Build() (*Query, error) {
 		for i := 1; i < len(s.where); i++ {
 			p = p.And(s.where[i])
 		}
-		err := s.buildExpression(p)
+		err = s.buildExpression(p)
 		if err != nil {
 			return nil, err
 		}
@@ -64,7 +75,12 @@ func (s *Selector[T]) buildExpression(p Expression) error {
 	}
 	switch expr := p.(type) {
 	case Column:
-		s.sb.WriteString(expr.name)
+		//s.sb.WriteString(expr.name)
+		fd, ok := s.model.fieldMaps[expr.name]
+		if !ok {
+			return errors.New("column not found")
+		}
+		s.sb.WriteString(fd.colName)
 	case Value:
 		s.sb.WriteString("?")
 		if s.args == nil {

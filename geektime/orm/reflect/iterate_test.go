@@ -25,8 +25,8 @@ func TestIterate(t *testing.T) {
 		},
 		{
 			name:    "string",
-			input:   "123456",
-			wantRes: []any{1, 2, 3, 4, 5, 6},
+			input:   "hello",
+			wantRes: []any{"h", "e", "l", "l", "o"},
 		},
 		{
 			name:    "invalid",
