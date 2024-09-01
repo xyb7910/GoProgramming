@@ -1,7 +1,7 @@
 package main
 
 import (
-	pro "LearingGo/grpcpro/protobuf1/proto"
+	pro "LearingGo/protobuf1/proto"
 	"fmt"
 	"google.golang.org/protobuf/proto"
 )

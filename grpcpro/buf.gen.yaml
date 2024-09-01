@@ -1,0 +1,22 @@
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: grpcpro/gen
+plugins:
+  # 默认使用最新版本
+  # remote 插件的远程地址
+  - remote: buf.build/protocolbuffers/go
+    # protoc-gen-go 插件
+    out: gen
+    opt: paths=source_relative
+
+  - remote: buf.build/grpc/go
+    # proto-gen-go-grpc 插件
+    out: gen
+    opt: paths=source_relative
+
+inputs:
+  # 定义输入目录。Buf 将处理该目录下的所有 .proto 文件
+  - directory: grpc
